@@ -9,37 +9,23 @@
 <h1>Converter</h1>
 
 <div class="container">
-    <h2>Shorter 2x2 Grid Form</h2>
+    <h2>Form with Two Rows</h2>
     <form>
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label for="From">Field 1:</label>
-                    <input type="number" class="form-control" id="input1" name="From" placeholder="Field 1">
+                    <label for="quantity_from">Количество валюты</label>
+                    <input type="text" class="form-control" id="quantity_from" name="quantity_from" placeholder="Количество валюты">
                 </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label for="input2">Field 2:</label>
-                    <input type="text" class="form-control" id="input2" name="input2" placeholder="Field 2">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1">
-                <div class="form-group">
-                    <label for="input3">Field 3:</label>
-                    <input type="text" class="form-control" id="input3" name="input3" placeholder="Field 3">
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="form-group">
-                    <label for="input4">Field 4:</label>
-                    <input type="text" class="form-control" id="input4" name="input4" placeholder="Field 4">
+                    <label for="from_currency">Валюта</label>
+                    <input type="text" class="form-control" id="from_currency" name="from_currency" placeholder="Валюта(EUR, USD)">
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 {% endblock %}
