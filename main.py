@@ -7,13 +7,12 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<name>')
 def hello(name=None):
-    print(name)
     return render_template('index.html', name=name)
 
 
 @app.route('/converter')
 def converter():
-    return '<h1>Converter</h1>'
+    return render_template('converter.html')
 
 
 @app.route('/articles')
