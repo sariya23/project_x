@@ -19,6 +19,7 @@ class CurrencyConverter:
         return amount
 
 
-# Насколько я понял, в конце URL нужно указывать из какой валюты переводим
-a = CurrencyConverter(f'https://v6.exchangerate-api.com/v6/{os.environ["API_KEY"]}/latest/EUR')
-print(a.convert('RUB', 2))
+if __name__ == '__main__':
+    # Насколько я понял, в конце URL нужно указывать из какой валюты переводим
+    a = CurrencyConverter(f'https://v6.exchangerate-api.com/v6/{os.environ["API_KEY"]}/latest/EUR')
+    print(a.convert('RUB', 2))
