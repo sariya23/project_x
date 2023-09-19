@@ -9,13 +9,13 @@
 {{ super() }}
 <h1>Converter</h1>
 
-<div class="container" style="text-align:left";>
-    <form action="">
+<div class="container" style="text-align:left">
+    <form action="{{ url_for('read_form')}}" method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="amount_currency_from">Введите из какой валюты вы конвертируете</label>
-                    <input type="number" class="form-control" id="amount_currency_from" name="amount_currency"
+                    <input type="number" class="form-control" id="amount_currency_from" name="amount_currency_from"
                            placeholder="Кол-во валюты">
                 </div>
             </div>
