@@ -14,15 +14,11 @@ class CurrencyConverter:
         self.data = requests.get(url).json()
         self.currencies = self.data['conversion_rates']
 
-    def converter(self, from_currency: str, to_currency: str, initial_amount: int | float):
-        amount = 0
-
-        if from_currency != 'USD':
-            amount = initial_amount / self.currencies[from_currency]
-
+    def convert(self, to_currency: str, initial_amount: int | float):
         amount = round(initial_amount * self.currencies[to_currency], 4)
         return amount
 
 
+# Насколько я понял, в конце URL нужно указывать из какой валюты переводим
 a = CurrencyConverter(f'https://v6.exchangerate-api.com/v6/{os.environ["API_KEY"]}/latest/EUR')
-print(a.converter('EUR', 'RUB', 1))
+print(a.convert('RUB', 2))
