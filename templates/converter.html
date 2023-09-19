@@ -10,7 +10,7 @@
 <h1>Converter</h1>
 
 <div class="container" style="text-align:left">
-    <form action="{{ url_for('read_form')}}" method="post">
+    <form action="{{url_for('get_converter_values')}}" method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -23,11 +23,11 @@
                 <div class="form-group">
                     <label for="dropdown_currency_from">Валюта:</label>
                     <select class="form-control" id="dropdown_currency_from" name="dropdown_currency_from">
-                        <option value="eur">EUR(Евро)</option>
-                        <option value="rub">RUB(Рубль)</option>
-                        <option value="usd">USD(Американский доллар)</option>
-                        <option value="cny">CNY(Юань)</option>
-                        <option value="inr">INR(Индийская рупия)</option>
+                        <option value="EUR">EUR(Евро)</option>
+                        <option value="RUB">RUB(Рубль)</option>
+                        <option value="USD">USD(Американский доллар)</option>
+                        <option value="CNY">CNY(Юань)</option>
+                        <option value="INR">INR(Индийская рупия)</option>
                     </select>
                 </div>
             </div>
@@ -36,11 +36,11 @@
                 <div class="form-group">
                     <label for="dropdown_currency_from">В валюту:</label>
                     <select class="form-control" id="dropdown_currency_to" name="dropdown_currency_to">
-                        <option value="eur">EUR(Евро)</option>
-                        <option value="rub">RUB(Рубль)</option>
-                        <option value="usd">USD(Американский доллар)</option>
-                        <option value="cny">CNY(Юань)</option>
-                        <option value="inr">INR(Индийская рупия)</option>
+                        <option value="EUR">EUR(Евро)</option>
+                        <option value="RUB">RUB(Рубль)</option>
+                        <option value="USD">USD(Американский доллар)</option>
+                        <option value="CNY">CNY(Юань)</option>
+                        <option value="INR">INR(Индийская рупия)</option>
                     </select>
                 </div>
             </div>

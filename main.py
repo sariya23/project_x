@@ -1,7 +1,9 @@
+from converter import CurrencyConverter
+
 from flask import Flask, render_template, request
 
-
 app = Flask(__name__)
+
 
 @app.route('/')
 @app.route('/<name>')
@@ -34,8 +36,22 @@ def info():
     return '<h1>Credit</h1>'
 
 
-@app.route('/read-form', methods=['POST'])
-def read_form():
+@app.route('/get_converter_values', methods=['POST'])
+def get_converter_values():
     data = request.form.to_dict()
-    print(data)
-    return data
+
+    converter_instance = CurrencyConverter(data['dropdown_currency_from'])
+
+    from_to_currency = converter_instance.convert(data['dropdown_currency_to'], float(data['amount_currency_from']))
+
+    return render_template(
+        'converted_currency.html',
+        amount_from_currecny=data['amount_currency_from'],
+        from_currency=data['dropdown_currency_from'],
+        to_currency=data['dropdown_currency_to'],
+        amount_to_currency=from_to_currency,
+    )
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=4444)
