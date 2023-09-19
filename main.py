@@ -37,4 +37,5 @@ def info():
 @app.route('/read-form', methods=['POST'])
 def read_form():
     data = request.form.to_dict()
+    print(data)
     return data
