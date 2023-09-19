@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -33,3 +32,9 @@ def credit():
 @app.route('/info')
 def info():
     return '<h1>Credit</h1>'
+
+
+@app.route('/read-form', methods=['POST'])
+def read_form():
+    data = request.form.to_dict()
+    return data
