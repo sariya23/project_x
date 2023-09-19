@@ -1,31 +1,64 @@
 <!doctype html>
 <title>CONVERTER</title>
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/converter.css') }}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/converter.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 {% extends "nav_bar.html" %}
 {% block nav %}
 {{ super() }}
 <h1>Converter</h1>
 
-<div class="container">
-    <h2>Form with Two Rows</h2>
-    <form>
+<div class="container" style="text-align:left";>
+    <form action="">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label for="quantity_from">Количество валюты</label>
-                    <input type="text" class="form-control" id="quantity_from" name="quantity_from" placeholder="Количество валюты">
+                    <label for="amount_currency_from">Введите из какой валюты вы конвертируете</label>
+                    <input type="number" class="form-control" id="amount_currency_from" name="amount_currency"
+                           placeholder="Кол-во валюты">
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group">
-                    <label for="from_currency">Валюта</label>
-                    <input type="text" class="form-control" id="from_currency" name="from_currency" placeholder="Валюта(EUR, USD)">
+                    <label for="dropdown_currency_from">Валюта:</label>
+                    <select class="form-control" id="dropdown_currency_from" name="dropdown_currency_from">
+                        <option value="eur">EUR(Евро)</option>
+                        <option value="rub">RUB(Рубль)</option>
+                        <option value="usd">USD(Американский доллар)</option>
+                        <option value="cny">CNY(Юань)</option>
+                        <option value="inr">INR(Индийская рупия)</option>
+                    </select>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+             <div class="center-block col-md-2">
+                <div class="form-group">
+                    <label for="dropdown_currency_from">В валюту:</label>
+                    <select class="form-control" id="dropdown_currency_to" name="dropdown_currency_to">
+                        <option value="eur">EUR(Евро)</option>
+                        <option value="rub">RUB(Рубль)</option>
+                        <option value="usd">USD(Американский доллар)</option>
+                        <option value="cny">CNY(Юань)</option>
+                        <option value="inr">INR(Индийская рупия)</option>
+                    </select>
+                </div>
+            </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;">Конвертировать</button>
+        <div class="row" style="margin-top:10px;">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="number" disabled class="form-control" id="amount_currency_to" name="amount_currency_to" placeholder="Здесь будет конвертированное количество валюты :)">
+                </div>
+            </div>
+           <div class="col-md-4">
+                <div class="form-group">
+                    <input type="number" disabled class="form-control" id="inputField" name="inputField" placeholder="Здесь будет ">
+                </div>
+            </div>
+        </div>
     </form>
 </div>
+
+
 {% endblock %}
