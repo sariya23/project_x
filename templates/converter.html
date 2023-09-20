@@ -50,7 +50,10 @@
     </form>
 
     <div id="block_converted">
-укцеукеуке
+        <h2>Результат конвертации:</h2>
+        <p id="result_text">
+
+        </p>
     </div>
 </div>
 <script>
@@ -71,8 +74,7 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Обновляем блок текста с полученными данными от сервера
-            document.getElementById('block_converted').textContent = data.response;
+            document.getElementById('result_text').textContent = `Из ${data.amount_from_currency} ${data.from_currency} получается ${data.converted_amount}${data.to_currency}`;
             resultDiv.style.display = 'block';
         })
         .catch(error => {

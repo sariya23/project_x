@@ -39,10 +39,20 @@ def info():
 @app.route('/converted_values', methods=['POST'])
 def converted_values():
     data = request.form.to_dict()
+    amount_from_currency = float(data['inputAmountCurrencyFrom'])
+    from_currency = data['SelectCurrencyFrom']
+    to_currency = data['SelectCurrencyTo']
     print(data)
 
+    converter_instance = CurrencyConverter(from_currency)
+    result = converter_instance.convert(to_currency, amount_from_currency)
+
     response_data = {
-        'response': f'{data}'
+        'from_currency': from_currency,
+        'to_currency': to_currency,
+        'amount_from_currency': amount_from_currency,
+        'converted_amount': result,
+
     }
 
     return jsonify(response_data)
