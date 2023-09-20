@@ -8,9 +8,9 @@
 {% block nav %}
 {{ super() }}
 <h1>Converter</h1>
-
+{{ A }}
 <div class="container" style="text-align:left">
-    <form action="{{url_for('get_converter_values')}}" method="post">
+    <form id='form'>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -23,6 +23,7 @@
                 <div class="form-group">
                     <label for="dropdown_currency_from">Валюта:</label>
                     <select class="form-control" id="dropdown_currency_from" name="dropdown_currency_from">
+                        <option value="" selected disabled hidden>Выберете валюту</option>
                         <option value="EUR">EUR(Евро)</option>
                         <option value="RUB">RUB(Рубль)</option>
                         <option value="USD">USD(Американский доллар)</option>
@@ -32,21 +33,52 @@
                 </div>
             </div>
         </div>
-             <div class="center-block col-md-2">
-                <div class="form-group">
-                    <label for="dropdown_currency_from">В валюту:</label>
-                    <select class="form-control" id="dropdown_currency_to" name="dropdown_currency_to">
-                        <option value="EUR">EUR(Евро)</option>
-                        <option value="RUB">RUB(Рубль)</option>
-                        <option value="USD">USD(Американский доллар)</option>
-                        <option value="CNY">CNY(Юань)</option>
-                        <option value="INR">INR(Индийская рупия)</option>
-                    </select>
-                </div>
+        <div class="center-block col-md-2">
+            <div class="form-group">
+                <label for="dropdown_currency_from">В валюту:</label>
+                <select class="form-control" id="dropdown_currency_to" name="dropdown_currency_to">
+                    <option value="EUR">EUR(Евро)</option>
+                    <option value="RUB">RUB(Рубль)</option>
+                    <option value="USD">USD(Американский доллар)</option>
+                    <option value="CNY">CNY(Юань)</option>
+                    <option value="INR">INR(Индийская рупия)</option>
+                </select>
             </div>
-        <button type="submit" class="btn btn-primary" style="margin-top:10px;">Конвертировать</button>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;" id="convert_button">Конвертировать
+        </button>
     </form>
-</div>
 
+    <div id="block_converted">
+укцеукеуке
+    </div>
+</div>
+<script>
+    document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault()
+        const inputAmountCurrencyFrom = document.getElementById('amount_currency_from').value;
+        const SelectCurrencyFrom = document.getElementById('dropdown_currency_from').value;
+        const SelectCurrencyTo = document.getElementById('dropdown_currency_to').value;
+
+        const formData = new FormData();
+        formData.append('inputAmountCurrencyFrom', inputAmountCurrencyFrom);
+        formData.append('SelectCurrencyFrom', SelectCurrencyFrom);
+        formData.append('SelectCurrencyTo', SelectCurrencyTo);
+
+        fetch('/converted_values', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Обновляем блок текста с полученными данными от сервера
+            document.getElementById('block_converted').textContent = data.response;
+            resultDiv.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+        });
+    });
+</script>
 
 {% endblock %}

@@ -1,6 +1,6 @@
 from converter import CurrencyConverter
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ def hello(name=None):
 
 @app.route('/converter')
 def converter():
-    return render_template('converter.html')
+    return render_template('converter.html', A='kek')
 
 
 @app.route('/articles')
@@ -36,21 +36,16 @@ def info():
     return '<h1>Credit</h1>'
 
 
-@app.route('/get_converter_values', methods=['POST'])
-def get_converter_values():
+@app.route('/converted_values', methods=['POST'])
+def converted_values():
     data = request.form.to_dict()
+    print(data)
 
-    converter_instance = CurrencyConverter(data['dropdown_currency_from'])
+    response_data = {
+        'response': f'{data}'
+    }
 
-    from_to_currency = converter_instance.convert(data['dropdown_currency_to'], float(data['amount_currency_from']))
-
-    return render_template(
-        'converted_currency.html',
-        amount_from_currecny=data['amount_currency_from'],
-        from_currency=data['dropdown_currency_from'],
-        to_currency=data['dropdown_currency_to'],
-        amount_to_currency=from_to_currency,
-    )
+    return jsonify(response_data)
 
 
 if __name__ == '__main__':
