@@ -15,7 +15,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
         })
         .then(response => response.json())
         .then(data => {
-            document.getElementById('result_text').textContent = `Из ${data.amount_from_currency} ${data.from_currency} получается ${data.converted_amount}${data.to_currency}`;
+            document.getElementById('result_text').textContent = `Из ${data.amount_from_currency}${data.from_currency} получается ${data.converted_amount}${data.to_currency}`;
             resultDiv.style.display = 'block';
         })
         .catch(error => {
