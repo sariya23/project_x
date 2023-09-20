@@ -1,4 +1,5 @@
 import sqlite3
+import os.path
 
 
 def get_db_connection(file_name: str):
@@ -10,6 +11,8 @@ def get_db_connection(file_name: str):
     которые ведут себя как обычные словари Python.
     :return: Объект подключения conn, который вы будете использовать для доступа к базе данных.
     """
+    if not os.path.isfile(file_name):
+        return False
     connect = sqlite3.connect(file_name)
     connect.row_factory = sqlite3.Row
     return connect

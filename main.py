@@ -2,6 +2,8 @@ from converter import CurrencyConverter
 
 from flask import Flask, render_template, request, jsonify
 
+from utils import get_db_connection
+
 app = Flask(__name__)
 
 
@@ -18,7 +20,14 @@ def converter():
 
 @app.route('/articles')
 def articles():
-    return render_template('articles.html')
+
+    conn = get_db_connection('database.db')
+    if conn:
+        posts = conn.execute('SELECT * FROM posts').fetchall()
+        conn.close()
+    else:
+        posts = []
+    return render_template('articles.html', posts=posts)
 
 
 @app.route('/deposit')
