@@ -26,7 +26,7 @@ class CurrencyConverter:
         в to_currency
         """
         amount = round(initial_amount * self.currencies[to_currency], 4)
-        return amount
+        return amount, self.currencies[to_currency]
 
 
 if __name__ == '__main__':

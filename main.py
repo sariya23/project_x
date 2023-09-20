@@ -45,14 +45,14 @@ def converted_values():
     print(data)
 
     converter_instance = CurrencyConverter(from_currency)
-    result = converter_instance.convert(to_currency, amount_from_currency)
+    result, rate = converter_instance.convert(to_currency, amount_from_currency)
 
     response_data = {
         'from_currency': from_currency,
         'to_currency': to_currency,
         'amount_from_currency': amount_from_currency,
         'converted_amount': result,
-
+        'rate': rate,
     }
 
     return jsonify(response_data)

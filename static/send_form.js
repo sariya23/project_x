@@ -16,7 +16,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
         .then(response => response.json())
         .then(data => {
             document.getElementById('result_text').textContent = `Из ${data.amount_from_currency}${data.from_currency} получается ${data.converted_amount}${data.to_currency}`;
-            resultDiv.style.display = 'block';
+            document.getElementById('rate').textContent = `1${data.from_currency} is ${data.rate} ${data.to_currency}`
         })
         .catch(error => {
             console.error('Ошибка:', error);
