@@ -18,22 +18,22 @@ def converter():
 
 @app.route('/articles')
 def articles():
-    return '<h1>Articles</h1>'
+    return render_template('articles.html')
 
 
 @app.route('/deposit')
 def deposit():
-    return '<h1>Deposit</h1>'
+    return render_template('deposit.html')
 
 
 @app.route('/credit')
 def credit():
-    return '<h1>Credit</h1>'
+    return render_template('credit.html')
 
 
 @app.route('/info')
 def info():
-    return '<h1>Credit</h1>'
+    return render_template('info.html')
 
 
 @app.route('/converted_values', methods=['POST'])
