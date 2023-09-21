@@ -20,13 +20,13 @@ def converter():
 
 @app.route('/articles')
 def articles():
-
     conn = get_db_connection('database.db')
     if conn:
         posts = conn.execute('SELECT * FROM posts').fetchall()
         conn.close()
     else:
         posts = []
+    print(posts)
     return render_template('articles.html', posts=posts)
 
 
